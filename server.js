@@ -16,7 +16,15 @@ app.get('/', function(req, res){
 
 //Opening a connnection with socket.io
 io.sockets.on('connection', function(socket){
-
   connections.push(socket);
-  console.log('Connected : %s sockets connected', connections.length);  
+  console.log('Connected : %s sockets connected', connections.length);
+
+ connections.splice(connections.indexOf(socket), 1);
+ console.log('Disconnected: %s sockets connected', connections.length);
 });
+
+
+// //Closing a connection with socket.io
+// io.sockets.on('disconnect', function(socket){
+//
+// });
